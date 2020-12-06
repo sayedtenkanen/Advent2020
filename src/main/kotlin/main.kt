@@ -2,7 +2,7 @@ import day_one.PuzzleOne
 import utils.fileReadOperations
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
     println("Executing from main:")
     val fileName = File("src/main/resources/input_one.txt").absolutePath
 
