@@ -5,7 +5,7 @@ import java.io.File
 internal class MainKtTest {
     @Test
     fun testInputFileExists() {
-        val fileName = File("src/main/resources/input_one.txt").absolutePath
+        val fileName = File("src/main/kotlin/day_one/input_one.txt").absolutePath
         assertTrue(File(fileName).exists())
     }
 }
