@@ -1,8 +1,11 @@
 package utils
 
+import java.io.File
+import java.io.FileNotFoundException
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.rmi.server.UnicastRemoteObject
 import java.util.stream.Collectors
 
 fun directoryBrowser(path: Path) {
@@ -32,6 +35,18 @@ fun directoryBrowser(path: Path) {
         }
     } else {
         println("Enter a directory")
+    }
+}
+
+fun runIfFileAvailable(
+    filePathNameString: String,
+    functionToExecute: () -> Unit
+) {
+    val fileName = File(filePathNameString).absolutePath
+    if (File(fileName).exists()) {
+        functionToExecute()
+    } else {
+        throw FileNotFoundException("File not found!")
     }
 }
 

@@ -1,7 +1,9 @@
 package day_one
 
 import utils.fileReadOperations
+import utils.runIfFileAvailable
 import java.io.File
+import java.io.FileNotFoundException
 import kotlin.system.measureTimeMillis
 
 class PuzzleOne() {
@@ -49,28 +51,27 @@ class PuzzleOne() {
     }
 
     fun solvePuzzleOne() {
-        val fileName = File("src/main/kotlin/day_one/input_one.txt").absolutePath
+        val filePathNameString = "src/main/kotlin/day_one/input_one.txt"
+        runIfFileAvailable(filePathNameString) { puzzleOneActions(filePathNameString) }
+    }
 
-        if (File(fileName).exists()) {
-            val target = 2020
-            PuzzleOne().executeTimedReadOperations(fileName)
-            val listIntValues =
-                (fileReadOperations().readFileAsLinesUsingBufferedReader(fileName)).map { it.toInt() }.sorted()
-            val listIterator = listIntValues.listIterator()
-            var item: Int
-            while (listIterator.hasNext()) {
-                item = listIterator.next()
-                if (listIntValues.contains(target.minus(item))) {
-                    println(
-                        "Values are $item and ${target.minus(item)}, product is %s".format(item * target.minus(item))
-                    )
-                    break
-                } else {
-                    // No match for $item
-                }
+    private fun puzzleOneActions(fileName: String) {
+        val target = 2020
+        PuzzleOne().executeTimedReadOperations(fileName)
+        val listIntValues =
+            (fileReadOperations().readFileAsLinesUsingBufferedReader(fileName)).map { it.toInt() }.sorted()
+        val listIterator = listIntValues.listIterator()
+        var item: Int
+        while (listIterator.hasNext()) {
+            item = listIterator.next()
+            if (listIntValues.contains(target.minus(item))) {
+                println(
+                    "Values are $item and ${target.minus(item)}, product is %s".format(item * target.minus(item))
+                )
+                break
+            } else {
+                // No match for $item
             }
-        } else {
-            println("File not found!")
         }
     }
 }
