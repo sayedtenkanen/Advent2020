@@ -2,8 +2,6 @@ package day_one
 
 import utils.fileReadOperations
 import utils.runIfFileAvailable
-import java.io.File
-import java.io.FileNotFoundException
 import kotlin.system.measureTimeMillis
 
 class PuzzleOne() {
