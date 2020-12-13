@@ -11,7 +11,7 @@ class PuzzleOne() {
     private var timesInMs = mutableMapOf<String, String>()
     private var time: Int = 0
 
-    fun executeTimedReadOperations(fileName: String): List<String> {
+    private fun executeTimedReadOperations(fileName: String): List<String> {
 
         time = measureTimeMillis {
             lines = fileReadOperations().readFileLineByLineUsingForEachLine(fileName)
@@ -55,7 +55,6 @@ class PuzzleOne() {
 
     private fun puzzleOneActions(fileName: String) {
         val target = 2020
-        PuzzleOne().executeTimedReadOperations(fileName)
         val listIntValues =
             (fileReadOperations().readFileAsLinesUsingBufferedReader(fileName)).map { it.toInt() }.sorted()
         val listIterator = listIntValues.listIterator()
@@ -64,7 +63,7 @@ class PuzzleOne() {
             item = listIterator.next()
             if (listIntValues.contains(target.minus(item))) {
                 println(
-                    "Values are $item and ${target.minus(item)}, product is %s".format(item * target.minus(item))
+                    "Puzzle #1. values are $item and ${target.minus(item)}, product is %s".format(item * target.minus(item))
                 )
                 break
             } else {
