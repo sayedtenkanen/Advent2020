@@ -1,2 +1,2 @@
 inputAdded:
-  - src/**/*.txt
+  - any: ['src/**/*.txt']
