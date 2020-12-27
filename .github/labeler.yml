@@ -1,2 +1,2 @@
 inputAdded:
-  - **.txt
+  - src/**/*.txt
