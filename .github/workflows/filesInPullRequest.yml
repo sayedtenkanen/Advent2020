@@ -1,15 +1,17 @@
-name: CI check on file changes
+name: Check for file changes
 
 on:
   pull_request:
-    types:
-      - open
+    branches: [ develop ]
 
 jobs:
+  
   job1:
+  
     runs-on: ubuntu-latest
 
     steps:
+    
     - name: Check out
       uses: actions/checkout@v1
 
