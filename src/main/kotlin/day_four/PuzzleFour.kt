@@ -7,7 +7,7 @@ class PuzzleFour {
     fun solvePuzzleFour() {
         val filePathNameString = "src/main/kotlin/day_three/input_four.txt"
 
-        println("print stufff")
+        println("print stuffff")
 
         runIfFileAvailable(puzzleFourActions().toString()) { }
     }
