@@ -24,4 +24,6 @@ jobs:
       run: |
         URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
         FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
-        echo $FILES
+        if echo $FILES | grep -q ".kt"; then
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${{ github.event.pull_request.number }}/labels"
+          curl -s -X POST -d '{"labels":["localization"]}' -G $URL
